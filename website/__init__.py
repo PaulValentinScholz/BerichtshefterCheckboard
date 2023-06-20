@@ -10,14 +10,12 @@ def configure():
 
 
 db = SQLAlchemy()
-DB_NAME = os.getenv('DATABASE_NAME')
 
 
 def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
-    app.config['DEBUG'] = True
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
     db.init_app(app)
 
     from .views import views
