@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+     <table class="table table-light table-hover table-bordered table-sm" name="berichtshefter">
+        <thead>
+            <tr align="center" style="color: #007bff">
+                <th scope="col">Von</th>
+                <th scope="col">Bis</th>
+                <th scope="col">Erstellt</th>
+                <th scope="col">Hochgeladen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for berichtshefter in user.berichtshefter %}
+                <tr align="center" id="{{berichtshefter.id}}"  style="{% if berichtshefter.erstellt %}color: #4E7A50; font-weight: bold; {% endif %} {% if berichtshefter.hochgeladen == True %}background-color: #D4E7D1;{% endif %}">
+                    <td id="von">{{ berichtshefter.vonDatum.strftime('%d.%m.%Y') }}</td>
+                    <td id="bis">{{ berichtshefter.bisDatum.strftime('%d.%m.%Y') }}</td>
+                    <td id="erstellt">
+                        <form method="POST">
+                            <input type="hidden" name="id" value="{{ berichtshefter.id }}">
+                            <input type="hidden" name="type" value="0">
+                            <button type="submit" class="btn {% if berichtshefter.erstellt %}btn-secondary{% else %}btn-primary{% endif %}">{{ berichtshefter.erstellt }}</button>
+                        </form>
+                    </td>
+                    <td id="hochgeladen">
+                        <form method="POST">
+                            <input type="hidden" name="id" value="{{ berichtshefter.id }}">
+                            <input type="hidden" name="type" value="1">
+                            <button type="submit" class="btn {% if berichtshefter.hochgeladen %}btn-secondary{% else %}btn-primary{% endif %}">{{ berichtshefter.hochgeladen }}</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
