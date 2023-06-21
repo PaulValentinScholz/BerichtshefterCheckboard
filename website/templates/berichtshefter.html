@@ -35,4 +35,20 @@
             {% endfor %}
         </tbody>
     </table>
+
+     <script>
+        // Store the scroll position when the page unloads
+        window.addEventListener('beforeunload', function() {
+            localStorage.setItem('scroll_position', window.pageYOffset);
+        });
+
+        // Restore the scroll position on page load
+        window.addEventListener('load', function() {
+            var scrollPosition = localStorage.getItem('scroll_position');
+            if (scrollPosition) {
+                window.scrollTo(0, scrollPosition);
+                localStorage.removeItem('scroll_position');
+            }
+        });
+    </script>
 {% endblock %}
