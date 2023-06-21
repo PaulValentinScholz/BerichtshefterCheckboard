@@ -39,8 +39,10 @@ def berichtshefter():
                 else:
                     berichtshefter.hochgeladen = False
         db.session.commit()
+        return redirect(url_for('views.berichtshefter'))
 
-    return render_template('berichtshefter.html', user=current_user)
+    scroll_position = request.args.get('scroll_position')
+    return render_template('berichtshefter.html', user=current_user, scroll_position=scroll_position)
 
 # @views.route('/update-berichtshefter/<int:id>/<int:type>', methods=["POST"])
 # @login_required
