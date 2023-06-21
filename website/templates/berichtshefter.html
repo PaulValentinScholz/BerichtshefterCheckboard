@@ -4,6 +4,7 @@
      <table class="table table-light table-hover table-bordered table-sm" name="berichtshefter">
         <thead>
             <tr align="center" style="color: #007bff">
+                <th scope="col">ID</th>
                 <th scope="col">Von</th>
                 <th scope="col">Bis</th>
                 <th scope="col">Erstellt</th>
@@ -13,6 +14,7 @@
         <tbody>
             {% for berichtshefter in user.berichtshefter %}
                 <tr align="center" id="{{berichtshefter.id}}"  style="{% if berichtshefter.erstellt %}color: #4E7A50; font-weight: bold; {% endif %} {% if berichtshefter.hochgeladen == True %}background-color: #D4E7D1;{% endif %}">
+                    <td id="id">{{ berichtshefter.id }}</td>
                     <td id="von">{{ berichtshefter.vonDatum.strftime('%d.%m.%Y') }}</td>
                     <td id="bis">{{ berichtshefter.bisDatum.strftime('%d.%m.%Y') }}</td>
                     <td id="erstellt">
