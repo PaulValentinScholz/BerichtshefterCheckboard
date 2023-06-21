@@ -18,7 +18,7 @@
     <title>{% block title %}Home{% endblock %}</title>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lgt">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Paul's Berichtshefterübersicht</a>
 
@@ -45,6 +45,10 @@
                 <a class="nav-link" href="/login">Login</a>
                 <a class="nav-link" href="/sign-up">Sign Up</a>
               {% endif %}
+                <div class="form-check form-switch ms-auto">
+                    <input class="form-check-input" type="checkbox" id="modeSwitch">
+                    <label class="form-check-label" for="modeSwitch">Dark Mode</label>
+                </div>
             </div>
           </div>
         </div>
@@ -93,5 +97,6 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
