@@ -42,7 +42,8 @@ def berichtshefter():
         return redirect(url_for('views.berichtshefter'))
 
     scroll_position = request.args.get('scroll_position')
-    return render_template('berichtshefter.html', user=current_user, scroll_position=scroll_position)
+    sorted_berichtshefter = sorted(current_user.berichtshefter, key=lambda bh: bh.id)
+    return render_template('berichtshefter.html', user=current_user, berichtshefter=sorted_berichtshefter, scroll_position=scroll_position)
 
 # @views.route('/update-berichtshefter/<int:id>/<int:type>', methods=["POST"])
 # @login_required
