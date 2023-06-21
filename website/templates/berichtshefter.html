@@ -4,7 +4,6 @@
      <table class="table table-light table-hover table-bordered table-sm" name="berichtshefter">
         <thead>
             <tr align="center" style="color: #007bff">
-                <th scope="col">ID</th>
                 <th scope="col">Von</th>
                 <th scope="col">Bis</th>
                 <th scope="col">Erstellt</th>
@@ -14,7 +13,6 @@
         <tbody>
             {% for bh in berichtshefter %}
                 <tr align="center" id="{{bh.id}}"  style="{% if bh.erstellt %}color: #4E7A50; font-weight: bold; {% endif %} {% if bh.hochgeladen == True %}background-color: #D4E7D1;{% endif %}">
-                    <td id="id">{{ bh }}</td>
                     <td id="von">{{ bh.vonDatum.strftime('%d.%m.%Y') }}</td>
                     <td id="bis">{{ bh.bisDatum.strftime('%d.%m.%Y') }}</td>
                     <td id="erstellt">
