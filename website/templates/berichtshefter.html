@@ -12,23 +12,23 @@
             </tr>
         </thead>
         <tbody>
-            {% for berichtshefter in user.berichtshefter %}
-                <tr align="center" id="{{berichtshefter.id}}"  style="{% if berichtshefter.erstellt %}color: #4E7A50; font-weight: bold; {% endif %} {% if berichtshefter.hochgeladen == True %}background-color: #D4E7D1;{% endif %}">
-                    <td id="id">{{ berichtshefter.id }}</td>
-                    <td id="von">{{ berichtshefter.vonDatum.strftime('%d.%m.%Y') }}</td>
-                    <td id="bis">{{ berichtshefter.bisDatum.strftime('%d.%m.%Y') }}</td>
+            {% for bh in berichtshefter %}
+                <tr align="center" id="{{bh.id}}"  style="{% if bh.erstellt %}color: #4E7A50; font-weight: bold; {% endif %} {% if bh.hochgeladen == True %}background-color: #D4E7D1;{% endif %}">
+                    <td id="id">{{ bh }}</td>
+                    <td id="von">{{ bh.vonDatum.strftime('%d.%m.%Y') }}</td>
+                    <td id="bis">{{ bh.bisDatum.strftime('%d.%m.%Y') }}</td>
                     <td id="erstellt">
                         <form method="POST">
-                            <input type="hidden" name="id" value="{{ berichtshefter.id }}">
+                            <input type="hidden" name="id" value="{{ bh.id }}">
                             <input type="hidden" name="type" value="0">
-                            <button type="submit" class="btn {% if berichtshefter.erstellt %}btn-secondary{% else %}btn-primary{% endif %}">{{ berichtshefter.erstellt }}</button>
+                            <button type="submit" class="btn {% if bh.erstellt %}btn-secondary{% else %}btn-primary{% endif %}">{{ bh.erstellt }}</button>
                         </form>
                     </td>
                     <td id="hochgeladen">
                         <form method="POST">
-                            <input type="hidden" name="id" value="{{ berichtshefter.id }}">
+                            <input type="hidden" name="id" value="{{ bh.id }}">
                             <input type="hidden" name="type" value="1">
-                            <button type="submit" class="btn {% if berichtshefter.hochgeladen %}btn-secondary{% else %}btn-primary{% endif %}">{{ berichtshefter.hochgeladen }}</button>
+                            <button type="submit" class="btn {% if bh.hochgeladen %}btn-secondary{% else %}btn-primary{% endif %}">{{ bh.hochgeladen }}</button>
                         </form>
                     </td>
                 </tr>
